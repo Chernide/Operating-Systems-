@@ -1,0 +1,11 @@
+Denver Chernin
+CSCI 3753 
+Programming Assignment 3
+
+
+How to build and run:
+
+1) "make clean" --> deletes the compiled code and executables for clean recompile
+2) "make multi_lookup" --> compiles the files and creates a multi_lookup.o
+3) Run 
+	./multi_lookup <# requestors> <# resolvers> <serviced.txt> <results.txt> <file names> 

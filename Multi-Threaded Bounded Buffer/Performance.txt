@@ -1,0 +1,72 @@
+Denver Chernin
+Performance.txt
+
+
+Number for requestor threads: 1
+
+Number for resolver threads: 1
+
+Total run time: 2.480147
+
+Thread 1 serviced 5 files
+-------------------------------------------------------
+Number for requestor threads: 1
+
+Number for resolver threads: 3
+
+Total run time: 4.509158
+
+Thread 1 serviced 5 files
+-------------------------------------------------------
+Number for requestor threads: 3
+
+Number for resolver threads: 1
+
+Total run time: 1.769314
+
+Thread 1 serviced 2 files
+Thread 2 serviced 1 file
+Thread 3 serivced 2 files
+-------------------------------------------------------
+Number for requestor threads: 3
+
+Number for resolver threads: 3
+
+Total run time: 4.626124
+
+Thread 1 serviced 2 files
+Thread 2 serviced 1 file
+Thread 3 serivced 2 files
+-------------------------------------------------------
+Number for requestor threads: 5
+
+Number for resolver threads: 5
+
+Total run time: 1.526478
+
+Thread 1 serviced 1 file
+Thread 2 serviced 1 file
+Thread 3 serivced 1 file
+Thread 4 serviced 1 file
+Thread 5 serviced 1 file
+-------------------------------------------------------
+Number for requestor threads: 8
+
+Number for resolver threads: 5
+
+Total run time: 2.055611
+
+Thread 1 serviced 1 file
+Thread 2 serviced 1 file
+Thread 3 serviced 0 files
+Thread 4 serviced 0 files
+Thread 5 serviced 0 files
+Thread 6 serivced 1 file
+Thread 7 serviced 1 file
+Thread 8 serviced 1 file
+
+
+Explanations & Paragraphs:
+
+The times and graphs match very closely. The results can be different due to the way the files are read in and what hostnames are looked up first because when DNSLookUp finds a hostname with no IP it takes more time than a hostname with an IP. According the graph 1 resolver and 1 requestor should be able to run between 1.5 - 2 seconds. While my program ran in 2.48 seconds. The times are close throughout all the tests comparing with the graphs. Such as having the same number of requestor threads and resolver threads that equal the number of files it runs the fastest because all files can be opened at one time. If there are less requestor threads than files, then the next file will open when the current one is done which takes more time. Each file is being serviced by its own thread which creates a quicker time to fill up the buffer. When this happens the resolvers are not usually waiting because of the number of files being serviced at the same time. The graph and the code are similar in the fact that as the number of resolver threads increase the time will increase as well. It helps to have more requestors and less resolvers because when the requestors context switch between they are helping each other filling up the buffer. But all the resolvers are doing the same thing so it is quicker for one thread to handle that. 
+
